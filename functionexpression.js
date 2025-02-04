@@ -1,11 +1,23 @@
-let count=0;
-
-document.getElementById("increaseButton").onclick=function(){
-    count+=1;
-    document.getElementById("myLabel").innerHTML=count;
+function fun(){       // function decalration
+    // some impl
 }
 
-document.getElementById("decreaseButton").onclick=function(){
-    count-=1;
-    document.getElementById("myLabel").innerHTML=count;
+let f= function gun(){   // named function expression
+    // some impl
+}
+
+let a = function(){        // anonymous function expression
+
+}
+
+(function x(){            // function expression
+
+})
+
+(function (){
+
+})
+
+let y = ()=>{
+
 }
