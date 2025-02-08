@@ -1,6 +1,3 @@
-/**
- * 1. Write a function to download data from url
- */
 
 function downloadData(url){
     console.log("Started the downloading process.....");
@@ -13,13 +10,6 @@ function downloadData(url){
     })
 }
 
-
-
-
-
-/**
- * 2.  write a function to save that downloaded data in a file and return the filename
- */
 function writeData(data){
     console.log("Started writing the data ")
     return new Promise(function exec(res, rej){
@@ -31,10 +21,6 @@ function writeData(data){
     })
 }
 
-
-/**
- * 3. write a function to upload the file written in the previous step to a newurl
- */
 function uploadData(url,file){
     return new Promise(function exec(res,rej){
         console.log("Uploading the file on",url);
@@ -45,21 +31,25 @@ function uploadData(url,file){
     })
 }
 
+async function steps(){
+    const downloadedData = await downloadData("www.xyz.com");
+    console.log("data downloaded is:",downloadData);
+    const fileWritten = await writeData(downloadedData);
+    console.log("file written is:",fileWritten);
+    const uploadResponse = await uploadData(fileWritten,"www.drive.com");
+    console.log("Upload response is :",uploadResponse);
+    return uploadResponse;
+
+}
+steps().then((value)=> console.log("we have completed steps with",value));
+console.log("outside");
+for(let i=0;i<1000000000;i++){}
+
+setTimeout(function f(){console.log("timer done")},4000);
+console.log("for loop done");
 
 
-
-
-
-let p = downloadData("www.xyz.com")
-.then(function onFulfillment(value){
-    console.log("Downloaded the data",value);
-    return writeData(value);
-})
-.then(function onFulfillment(val){
-    console.log("written the data in ",val);
-    return uploadData(val);
-})
-.then(function onfullfillment(val){
-    console.log("uploaded the file ", val);
-})
-
+/**
+ * the functions decalred with async by default 
+ * if you are not manually returning a promise , it will assume to be promise by default
+ */
