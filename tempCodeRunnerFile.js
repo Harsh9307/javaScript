@@ -1,1 +1,1 @@
-)
+let n = new Name("Prabhu",20);
